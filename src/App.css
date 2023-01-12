@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +39,22 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* header */
+.appHeader {
+  height: 60px;
+}
+
+/* page content */
+.page-content {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* footer */
+.appFooter {
+  height: 60px;
+  background-color: black;
 }

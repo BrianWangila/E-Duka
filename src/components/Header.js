@@ -1,43 +1,48 @@
-import React, { useState } from 'react';
-import { ShoppingOutlined, ShoppingCartOutlined, DownCircleOutlined, UserOutlined } from '@ant-design/icons';
-import { Menu } from 'antd';
+import React, { useState } from "react";
+import {
+  ShoppingOutlined,
+  ShoppingCartOutlined,
+  DownCircleOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Menu } from "antd";
 const items = [
   {
-    label: 'E-Duka',
-    key: 'mail',
+    label: "E-Duka",
+    key: "mail",
     icon: <ShoppingOutlined />,
   },
-  
+
   {
-    label: 'Categories',
-    key: 'SubMenu',
+    label: "Categories",
+    key: "SubMenu",
     icon: <DownCircleOutlined />,
     children: [
       {
-        type: 'group',
-        label: 'Clothing',
+        type: "group",
+        label: "Clothing",
         children: [
           {
-            label: 'Ladies',
-            key: 'setting:1',
+            label: "Ladies",
+            key: "setting:1",
           },
           {
-            label: 'Men',
-            key: 'setting:2',
+            label: "Men",
+            key: "setting:2",
           },
         ],
       },
       {
-        type: 'group',
-        label: 'Jewelery',
+        type: "group",
+        label: "Jewelery",
         children: [
           {
-            label: 'Necklaces',
-            key: 'setting:3',
+            label: "Necklaces",
+            key: "setting:3",
           },
           {
-            label: 'Rings',
-            key: 'setting:4',
+            label: "Rings",
+            key: "setting:4",
           },
         ],
       },
@@ -49,7 +54,7 @@ const items = [
         Cart
       </a>
     ),
-    key: 'cart',
+    key: "cart",
     icon: <ShoppingCartOutlined />,
   },
   {
@@ -58,16 +63,25 @@ const items = [
         SignIn
       </a>
     ),
-    key: 'user',
+    key: "user",
     icon: <UserOutlined />,
   },
 ];
 const Header = () => {
-  const [current, setCurrent] = useState('mail');
+  const [current, setCurrent] = useState("mail");
   const onClick = (e) => {
-    console.log('click ', e);
+    console.log("click ", e);
     setCurrent(e.key);
   };
-  return <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />;
+  return (
+    <div className="appHeader">
+      <Menu
+        onClick={onClick}
+        selectedKeys={[current]}
+        mode="horizontal"
+        items={items}
+      />
+    </div>
+  );
 };
 export default Header;
