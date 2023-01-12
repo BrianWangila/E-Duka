@@ -17,7 +17,6 @@ const items = [
 
   {
     label: "Categories",
-    key: "categories",
     icon: <DownCircleOutlined />,
     children: [
       {
@@ -76,17 +75,8 @@ const items = [
       },
     ],
   },
-  {
-    label: "Cart",
-    key: "cart",
-    icon: <ShoppingCartOutlined />,
-  },
-  {
-    label: "SignIn",
-    key: "signIn",
-    icon: <UserOutlined />,
-  },
 ];
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -98,8 +88,6 @@ const Header = () => {
     <div className="appHeader">
       <Menu
         onClick={onMenuClick}
-        theme="dark"
-        color="white"
         mode="horizontal"
         items={items}
       />

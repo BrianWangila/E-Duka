@@ -1,5 +1,7 @@
 export const getAllProducts = async () => {
-  fetch("https://dummyjson.com/products")
+  return fetch("https://dummyjson.com/products")
     .then((res) => res.json())
-    .then(console.log);
+    .then((res) => {
+      return res;
+    });
 };
