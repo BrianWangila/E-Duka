@@ -6,17 +6,6 @@
   height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -47,7 +36,7 @@
 }
 
 /* page content */
-.page-content {
+.pageContent {
   display: flex;
   flex: 1;
   overflow-y: auto;
@@ -57,4 +46,5 @@
 .appFooter {
   height: 60px;
   background-color: black;
+  color: white;
 }
