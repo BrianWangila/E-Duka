@@ -14,12 +14,13 @@ const Products = () => {
   return (
     <div className="products">
       <List
+      grid={{column: 3}}
         renderItem={(product, index) => {
           return (
             <Card
               title={product.title}
               key={index}
-              cover={<Image src={product.thumbnail} />}
+              cover={<Image className="item-card-image" src={product.thumbnail} />}
             ></Card>
           );
         }}
