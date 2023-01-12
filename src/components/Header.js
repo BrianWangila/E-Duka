@@ -7,6 +7,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
+
 const items = [
   {
     label: "E-Duka",
@@ -21,15 +22,41 @@ const items = [
     children: [
       {
         type: "group",
-        label: "Clothing",
+        label: "Women",
         children: [
           {
-            label: "Women",
-            key: "women",
+            label: "Dresses",
+            key: "womens-dresses",
           },
           {
-            label: "Men",
-            key: "men",
+            label: "Shoes",
+            key: "womens-shoes",
+          },
+          {
+            label: "Watches",
+            key: "womens-watches",
+          },
+          {
+            label: "Bags",
+            key: "womens-bags",
+          },
+        ],
+      },
+      {
+        type: "group",
+        label: "Men",
+        children: [
+          {
+            label: "Shirts",
+            key: "mens-shirts",
+          },
+          {
+            label: "Shoes",
+            key: "mens-shoes",
+          },
+          {
+            label: "Watches",
+            key: "mens-watches",
           },
         ],
       },
@@ -62,17 +89,17 @@ const items = [
 ];
 const Header = () => {
   const navigate = useNavigate();
-  const [current, setCurrent] = useState("");
+
   const onMenuClick = (item) => {
-    setCurrent(item.key);
-    console.log("item", item);
     navigate(`/${item.key}`);
   };
+
   return (
     <div className="appHeader">
       <Menu
         onClick={onMenuClick}
-        selectedKeys={[current]}
+        theme="dark"
+        color="white"
         mode="horizontal"
         items={items}
       />

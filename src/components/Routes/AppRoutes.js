@@ -1,13 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Categories from "../../Pages/Categories";
+import Category from "../../Pages/Category/Category";
 import Home from "../../Pages/Home";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/:categoryId" element={<Categories />} />
+      <Route path="/:categoryId" element={<Category />} />
     </Routes>
   );
 };

@@ -1,10 +1,10 @@
 import React from "react";
 import Products from "../../components/Products/Products";
 
-const Categories = () => {
+const Category = () => {
   return <div className="home">
     <Products />
   </div>;
 };
 
-export default Categories;
+export default Category;
