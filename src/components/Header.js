@@ -24,8 +24,8 @@ const items = [
         label: "Clothing",
         children: [
           {
-            label: "Ladies",
-            key: "ladies",
+            label: "Women",
+            key: "women",
           },
           {
             label: "Men",
@@ -35,15 +35,15 @@ const items = [
       },
       {
         type: "group",
-        label: "Jewelery",
+        label: "Electronics",
         children: [
           {
-            label: "Necklaces",
-            key: "necklaces",
+            label: "Smartphones",
+            key: "smartphones",
           },
           {
-            label: "Rings",
-            key: "rings",
+            label: "Laptops",
+            key: "laptops",
           },
         ],
       },
