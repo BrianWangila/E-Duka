@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "antd/dist/reset.css";
 import "./App.css";
 import Header from "./components/Header";
@@ -7,9 +8,11 @@ import Footer from "./components/Footer";
 
 const App = () => (
   <div className="App">
-    <Header />
-    <PageContent />
-    <Footer />
+    <Router>
+      <Header />
+      <PageContent />
+      <Footer />
+    </Router>
   </div>
 );
 

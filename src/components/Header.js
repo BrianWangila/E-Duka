@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ShoppingOutlined,
   ShoppingCartOutlined,
@@ -9,13 +10,13 @@ import { Menu } from "antd";
 const items = [
   {
     label: "E-Duka",
-    key: "mail",
+    key: "",
     icon: <ShoppingOutlined />,
   },
 
   {
     label: "Categories",
-    key: "SubMenu",
+    key: "categories",
     icon: <DownCircleOutlined />,
     children: [
       {
@@ -24,11 +25,11 @@ const items = [
         children: [
           {
             label: "Ladies",
-            key: "setting:1",
+            key: "ladies",
           },
           {
             label: "Men",
-            key: "setting:2",
+            key: "men",
           },
         ],
       },
@@ -38,45 +39,39 @@ const items = [
         children: [
           {
             label: "Necklaces",
-            key: "setting:3",
+            key: "necklaces",
           },
           {
             label: "Rings",
-            key: "setting:4",
+            key: "rings",
           },
         ],
       },
     ],
   },
   {
-    label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-        Cart
-      </a>
-    ),
+    label: "Cart",
     key: "cart",
     icon: <ShoppingCartOutlined />,
   },
   {
-    label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-        SignIn
-      </a>
-    ),
-    key: "user",
+    label: "SignIn",
+    key: "signIn",
     icon: <UserOutlined />,
   },
 ];
 const Header = () => {
-  const [current, setCurrent] = useState("mail");
-  const onClick = (e) => {
-    console.log("click ", e);
-    setCurrent(e.key);
+  const navigate = useNavigate();
+  const [current, setCurrent] = useState("");
+  const onMenuClick = (item) => {
+    setCurrent(item.key);
+    console.log("item", item);
+    navigate(`/${item.key}`);
   };
   return (
     <div className="appHeader">
       <Menu
-        onClick={onClick}
+        onClick={onMenuClick}
         selectedKeys={[current]}
         mode="horizontal"
         items={items}
