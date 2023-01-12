@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllProducts } from "../../API/Api";
-import { List, Card, Image, Typography } from "antd";
+import { List, Card, Image, Typography, Rate } from "antd";
 const { Meta } = Card;
 
 const Products = () => {
@@ -19,11 +19,15 @@ const Products = () => {
         renderItem={(product, index) => {
           return (
             <Card
+              className="item-card"
               title={product.title}
               key={index}
               cover={
                 <Image className="item-card-image" src={product.thumbnail} />
               }
+              actions={[
+                <Rate value={product.rating} ></Rate>
+              ]}
             >
               <Card.Meta
                 title={
@@ -36,6 +40,10 @@ const Products = () => {
                         product.price /
                           (1 - product.discountPercentage / 100).toFixed(2)
                       ).toFixed(2)}
+                    </Typography.Text>
+                    <Typography.Text type="secondary">
+                      {" "}
+                      {product.discountPercentage}% off
                     </Typography.Text>
                   </Typography.Paragraph>
                 }

@@ -42,8 +42,14 @@
   overflow-y: auto;
 }
 
+/* card */
+.item-card {
+  margin: 10px;
+  height: fit-content;
+}
+
 /* card-image */
-.item-card-image{
+.item-card-image {
   height: 150px !important;
   object-fit: scale-down;
 }
