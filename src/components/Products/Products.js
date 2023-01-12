@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getAllProducts } from "../../API/Api";
-import { List, Card, Image, Typography, Rate, Button } from "antd";
+import { getAllProducts, addToCart } from "../../API/Api";
+import { List, Card, Image, Typography, Rate, Button, message } from "antd";
 const { Meta } = Card;
 
 const Products = () => {
@@ -27,7 +27,7 @@ const Products = () => {
               }
               actions={[
                 <Rate allowHalf disabled value={product.rating} />,
-                <Button type="primary">Add to Cart</Button>
+                <AddToCartButton item={product} />,
               ]}
             >
               <Card.Meta
@@ -66,6 +66,20 @@ const Products = () => {
         dataSource={items}
       ></List>
     </div>
+  );
+};
+
+const AddToCartButton = ({ item }) => {
+  const addProductToCart = () => {
+    addToCart(item.id).then((res) => {
+      message.success(`${item.title} added to cart!`);
+    });
+  };
+
+  return (
+    <Button type="link" onClick={addProductToCart}>
+      Add to Cart
+    </Button>
   );
 };
 
