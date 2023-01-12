@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAllProducts } from "../../API/Api";
-import { List, Card, Image, Typography, Rate } from "antd";
+import { List, Card, Image, Typography, Rate, Button } from "antd";
 const { Meta } = Card;
 
 const Products = () => {
@@ -26,7 +26,8 @@ const Products = () => {
                 <Image className="item-card-image" src={product.thumbnail} />
               }
               actions={[
-                <Rate value={product.rating} ></Rate>
+                <Rate allowHalf disabled value={product.rating} />,
+                <Button type="primary">Add to Cart</Button>
               ]}
             >
               <Card.Meta
