@@ -10,6 +10,7 @@ import {
 import {
   Badge,
   Button,
+  Checkbox,
   Drawer,
   Form,
   Input,
@@ -133,6 +134,12 @@ const AppCart = () => {
       setCartItems(res.products);
     });
   }, []);
+
+  // function onConfirmOrder
+  const onConfirmOrder = (values) => {
+    console.log({values});
+  };
+
   return (
     <>
       <Badge
@@ -219,7 +226,7 @@ const AppCart = () => {
           setCheckoutDrawerOpen(false);
         }}
       >
-        <Form>
+        <Form onFinish={onConfirmOrder}>
           <Typography.Title level={4}>Checkout</Typography.Title>
           <Form.Item
             label="Full Name"
@@ -257,15 +264,22 @@ const AppCart = () => {
           >
             <Input placeholder="address" />
           </Form.Item>
-          <Form.Item label="Phone" name="phone" rules={[
+          <Form.Item
+            label="Phone"
+            name="phone"
+            rules={[
               {
                 required: true,
                 message: "Please input your phone number",
               },
-            ]}>
+            ]}
+          >
             <Input placeholder="+254 7xx-xxx-xxx" />
           </Form.Item>
-          <Button type="primary" block>
+          <Form.Item>
+            <Checkbox defaultChecked disabled>Cash on Delivery</Checkbox>
+          </Form.Item>
+          <Button type="primary" block htmlType="submit">
             Confirm Order
           </Button>
         </Form>
