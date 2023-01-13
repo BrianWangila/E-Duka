@@ -15,6 +15,7 @@ import {
   Button,
   message,
   Spin,
+  Select,
 } from "antd";
 const { Meta } = Card;
 
@@ -22,6 +23,7 @@ const Products = () => {
   const category = useParams();
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
+  const [sortOrder, setSortOrder] = useState("price-asc");
   useEffect(() => {
     setLoading(true);
     (category?.categoryId
@@ -33,6 +35,22 @@ const Products = () => {
       setLoading(false);
     });
   }, [category]);
+
+  //   sort the products
+  const sortItems = () => {
+    switch (sortOrder) {
+      case "price-asc":
+        return items.sort((a, b) => a.price - b.price);
+      case "price-desc":
+        return items.sort((a, b) => b.price - a.price);
+      case "rating-asc":
+        return items.sort((a, b) => a.rating - b.rating);
+      case "rating-desc":
+        return items.sort((a, b) => b.rating - a.rating);
+      default:
+        return items;
+    }
+  };
 
   //   if loading is true, show a loading message and Spinner
   if (loading) {
@@ -49,6 +67,30 @@ const Products = () => {
 
   return (
     <div className="products">
+      {/* sort through the products */}
+      <Typography.Text>Sort items by: </Typography.Text>
+      <Select
+        onChange={(value) => setSortOrder(value)}
+        defaultValue={"price-asc"}
+        options={[
+          {
+            label: "Price: Low to High",
+            value: "price-asc",
+          },
+          {
+            label: "Price: High to Low",
+            value: "price-desc",
+          },
+          {
+            label: "Rating: Low to High",
+            value: "rating-asc",
+          },
+          {
+            label: "Rating: High to Low",
+            value: "rating-desc",
+          },
+        ]}
+      ></Select>
       <List
         grid={{ column: 3 }}
         renderItem={(product, index) => {
@@ -98,7 +140,7 @@ const Products = () => {
             </Card>
           );
         }}
-        dataSource={items}
+        dataSource={sortItems()}
       ></List>
     </div>
   );
