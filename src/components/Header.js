@@ -7,7 +7,7 @@ import {
   DownCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Drawer, Menu, Table, Typography } from "antd";
+import { Badge, Button, Drawer, InputNumber, Menu, Table, Typography } from "antd";
 
 const items = [
   {
@@ -136,6 +136,7 @@ const AppCart = () => {
         open={cartDrawerOpen}
         onClose={() => setCartDrawerOpen(false)}
         title="Your Cart"
+        contentWrapperStyle={{ width: "100%", maxWidth: "500px" }}
       >
         <Table
           columns={[
@@ -146,18 +147,22 @@ const AppCart = () => {
             {
               title: "Price",
               dataIndex: "price",
+              render: (price) => <span>${price}</span>,
             },
             {
               title: "Quantity",
               dataIndex: "quantity",
+              render: (quantity) => <InputNumber defaultValue={quantity}></InputNumber>,
             },
             {
               title: "Total",
               dataIndex: "total",
+              render: (total) => <span>${total}</span>,
             },
             {
               title: "Discount Price",
               dataIndex: "discountedPrice",
+              render: (discountedPrice) => <span>${discountedPrice}</span>,
             },
           ]}
           dataSource={cartItems}
