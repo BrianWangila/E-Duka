@@ -6,11 +6,11 @@ import {
   DownCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Menu } from "antd";
+import { Button, Menu, Typography } from "antd";
 
 const items = [
   {
-    label: "E-Duka",
+    label: "Home",
     key: "",
     icon: <ShoppingOutlined />,
   },
@@ -86,11 +86,28 @@ const Header = () => {
 
   return (
     <div className="appHeader">
-      <Menu
-        onClick={onMenuClick}
-        mode="horizontal"
-        items={items}
-      />
+      <div className="logo">
+        <Typography.Title level={3} className="logo-text">
+          E-Duka
+        </Typography.Title>
+      </div>
+      <div className="menu">
+        <Menu onClick={onMenuClick} mode="horizontal" items={items} />
+      </div>
+      <div className="cart-and-account">
+        <Menu mode="horizontal">
+          <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
+            Cart
+          </Menu.Item>
+          <Menu.Item key="signin">
+            <Button type="primary">Sign In</Button>
+          </Menu.Item>
+
+          <Menu.Item key="signup">
+            <Button>Sign Up</Button>
+          </Menu.Item>
+        </Menu>
+      </div>
     </div>
   );
 };

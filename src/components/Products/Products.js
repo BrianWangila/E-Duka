@@ -24,7 +24,10 @@ const Products = () => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     setLoading(true);
-    getProductsByCategory(category.categoryId).then((res) => {
+    (category?.categoryId
+      ? getProductsByCategory(category.categoryId)
+      : getAllProducts()
+    ).then((res) => {
       console.log("res", res.products);
       setItems(res.products);
       setLoading(false);
