@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { getCart } from "../API/Api";
 import { useNavigate } from "react-router-dom";
 import {
@@ -7,7 +7,15 @@ import {
   DownCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Drawer, InputNumber, Menu, Table, Typography } from "antd";
+import {
+  Badge,
+  Button,
+  Drawer,
+  InputNumber,
+  Menu,
+  Table,
+  Typography,
+} from "antd";
 
 const items = [
   {
@@ -139,6 +147,7 @@ const AppCart = () => {
         contentWrapperStyle={{ width: "100%", maxWidth: "500px" }}
       >
         <Table
+          pagination={false}
           columns={[
             {
               title: "Title",
@@ -152,7 +161,9 @@ const AppCart = () => {
             {
               title: "Quantity",
               dataIndex: "quantity",
-              render: (quantity) => <InputNumber defaultValue={quantity}></InputNumber>,
+              render: (quantity) => (
+                <InputNumber defaultValue={quantity}></InputNumber>
+              ),
             },
             {
               title: "Total",
@@ -166,6 +177,17 @@ const AppCart = () => {
             },
           ]}
           dataSource={cartItems}
+          summary={(data) => {
+            const total = data.reduce((prev, curr) => {
+              return prev + curr.total;
+            }, 0);
+            return (
+              <Table.Summary.Row>
+                <Table.Summary.Cell colSpan={3}>Total</Table.Summary.Cell>
+                <Table.Summary.Cell>${total}</Table.Summary.Cell>
+              </Table.Summary.Row>
+            );
+          }}
         />
       </Drawer>
     </>
