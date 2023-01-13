@@ -161,19 +161,31 @@ const AppCart = () => {
             {
               title: "Quantity",
               dataIndex: "quantity",
-              render: (quantity) => (
-                <InputNumber defaultValue={quantity}></InputNumber>
+              render: (quantity, record) => (
+                <InputNumber
+                  min={0}
+                  defaultValue={quantity}
+                  onChange={(quantity) => {
+                    setCartItems(
+                      cartItems.map((item) => {
+                        if (item.id === record.id) {
+                          return {
+                            ...item,
+                            quantity,
+                            total: quantity * item.price,
+                          };
+                        }
+                        return item;
+                      })
+                    );
+                  }}
+                ></InputNumber>
               ),
             },
             {
               title: "Total",
               dataIndex: "total",
               render: (total) => <span>${total}</span>,
-            },
-            {
-              title: "Discount Price",
-              dataIndex: "discountedPrice",
-              render: (discountedPrice) => <span>${discountedPrice}</span>,
             },
           ]}
           dataSource={cartItems}
