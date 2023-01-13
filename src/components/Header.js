@@ -91,9 +91,8 @@ const Header = () => {
         <Typography.Title level={3} className="logo-text">
           E-Duka
         </Typography.Title>
-        <Menu onClick={onMenuClick} mode="horizontal" items={items} />
       </div>
-
+      <Menu onClick={onMenuClick} mode="horizontal" items={items} />
       <div className="cart-and-account">
         <Menu mode="horizontal">
           <Menu.Item key="cart">
