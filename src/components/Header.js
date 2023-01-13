@@ -221,16 +221,48 @@ const AppCart = () => {
       >
         <Form>
           <Typography.Title level={4}>Checkout</Typography.Title>
-          <Form.Item label="Full Name" name="full_name">
+          <Form.Item
+            label="Full Name"
+            name="full_name"
+            rules={[
+              {
+                required: true,
+                message: "Please input your full name",
+              },
+            ]}
+          >
             <Input placeholder="Full Name" />
           </Form.Item>
-          <Form.Item label="Email" name="email">
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please input your email",
+              },
+            ]}
+          >
             <Input placeholder="name@example.com" />
           </Form.Item>
-          <Form.Item label="Address" name="address">
+          <Form.Item
+            label="Address"
+            name="address"
+            rules={[
+              {
+                required: true,
+                message: "Please input your address",
+              },
+            ]}
+          >
             <Input placeholder="address" />
           </Form.Item>
-          <Form.Item label="Phone" name="phone">
+          <Form.Item label="Phone" name="phone" rules={[
+              {
+                required: true,
+                message: "Please input your phone number",
+              },
+            ]}>
             <Input placeholder="+254 7xx-xxx-xxx" />
           </Form.Item>
           <Button type="primary" block>
