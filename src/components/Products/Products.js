@@ -85,6 +85,7 @@ const AddToCartButton = ({ item }) => {
       onClick={() => {
         addProductToCart();
       }}
+      loading={loading}
     >
       Add to Cart
     </Button>

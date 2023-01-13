@@ -7,6 +7,15 @@ export const getAllProducts = async () => {
     });
 };
 
+// fetch all products by category
+export const getProductsByCategory = async (categoryId) => {
+  return fetch(`https://dummyjson.com/products?categoryId=${categoryId}`)
+    .then((res) => res.json())
+    .then((res) => {
+      return res;
+    });
+};
+
 // add product to cart
 export const addToCart = async (id) => {
   fetch("https://dummyjson.com/carts/add", {
