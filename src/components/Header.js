@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getCart } from "../API/Api";
 import { useNavigate } from "react-router-dom";
 import {
   ShoppingOutlined,
@@ -6,7 +7,7 @@ import {
   DownCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Badge, Button, Drawer, Menu, Typography } from "antd";
+import { Badge, Button, Drawer, Menu, Table, Typography } from "antd";
 
 const items = [
   {
@@ -90,10 +91,9 @@ const Header = () => {
         <Typography.Title level={3} className="logo-text">
           E-Duka
         </Typography.Title>
-      </div>
-      <div className="menu">
         <Menu onClick={onMenuClick} mode="horizontal" items={items} />
       </div>
+
       <div className="cart-and-account">
         <Menu mode="horizontal">
           <Menu.Item key="cart">
@@ -114,6 +114,13 @@ const Header = () => {
 // appcart component
 const AppCart = () => {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    getCart().then((res) => {
+      setCartItems(res.products);
+    });
+  }, []);
   return (
     <>
       <Badge
@@ -124,7 +131,37 @@ const AppCart = () => {
       >
         <ShoppingCartOutlined /> Cart
       </Badge>
-      <Drawer open={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
+      <Drawer
+        open={cartDrawerOpen}
+        onClose={() => setCartDrawerOpen(false)}
+        title="Your Cart"
+      >
+        <Table
+          columns={[
+            {
+              title: "Title",
+              dataIndex: "title",
+            },
+            {
+              title: "Price",
+              dataIndex: "price",
+            },
+            {
+              title: "Quantity",
+              dataIndex: "quantity",
+            },
+            {
+              title: "Total",
+              dataIndex: "total",
+            },
+            {
+              title: "Discount Price",
+              dataIndex: "discountedPrice",
+            },
+          ]}
+          dataSource={cartItems}
+        />
+      </Drawer>
     </>
   );
 };

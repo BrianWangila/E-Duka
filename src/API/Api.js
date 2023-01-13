@@ -32,3 +32,8 @@ export const addToCart = async (id) => {
     }),
   }).then((res) => res.json());
 };
+
+// fetch cart
+export const getCart = async () => {
+  return fetch("https://dummyjson.com/carts/1").then((res) => res.json());
+};

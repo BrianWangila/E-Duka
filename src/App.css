@@ -39,7 +39,14 @@
   justify-content: space-between;
 }
 
-.cart{
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.cart {
   display: flex;
   align-items: center;
   justify-content: center;
