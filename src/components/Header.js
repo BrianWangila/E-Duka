@@ -6,7 +6,7 @@ import {
   DownCircleOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Button, Menu, Typography } from "antd";
+import { Badge, Button, Drawer, Menu, Typography } from "antd";
 
 const items = [
   {
@@ -96,8 +96,8 @@ const Header = () => {
       </div>
       <div className="cart-and-account">
         <Menu mode="horizontal">
-          <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
-            Cart
+          <Menu.Item key="cart">
+            <AppCart />
           </Menu.Item>
           <Menu.Item key="signin">
             <Button type="primary">Sign In</Button>
@@ -111,4 +111,22 @@ const Header = () => {
     </div>
   );
 };
+// appcart component
+const AppCart = () => {
+  const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+  return (
+    <>
+      <Badge
+        count={5}
+        onClick={() => {
+          setCartDrawerOpen(true);
+        }}
+      >
+        <ShoppingCartOutlined /> Cart
+      </Badge>
+      <Drawer open={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
+    </>
+  );
+};
+
 export default Header;
