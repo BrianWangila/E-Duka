@@ -74,7 +74,18 @@
 
 /* footer */
 .appFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   height: 60px;
   background-color: black;
-  color: white;
+  color: white !important;
+}
+
+.footer-links{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
