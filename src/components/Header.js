@@ -92,7 +92,9 @@ const Header = () => {
           E-Duka
         </Typography.Title>
       </div>
-      <Menu onClick={onMenuClick} mode="horizontal" items={items} />
+      <div className="menu">
+        <Menu onClick={onMenuClick} mode="horizontal" items={items} />
+      </div>
       <div className="cart-and-account">
         <Menu mode="horizontal">
           <Menu.Item key="cart">
