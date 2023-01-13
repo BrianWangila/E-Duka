@@ -11,6 +11,8 @@ import {
   Badge,
   Button,
   Drawer,
+  Form,
+  Input,
   InputNumber,
   Menu,
   Table,
@@ -123,6 +125,7 @@ const Header = () => {
 // appcart component
 const AppCart = () => {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+  const [checkoutDrawerOpen, setCheckoutDrawerOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -201,6 +204,39 @@ const AppCart = () => {
             );
           }}
         />
+        <Button
+          type="primary"
+          block
+          onClick={() => setCheckoutDrawerOpen(true)}
+        >
+          Checkout
+        </Button>
+      </Drawer>
+      {/* user Drawer */}
+      <Drawer
+        open={checkoutDrawerOpen}
+        onClose={() => {
+          setCheckoutDrawerOpen(false);
+        }}
+      >
+        <Form>
+          <Typography.Title level={4}>Checkout</Typography.Title>
+          <Form.Item label="Full Name" name="full_name">
+            <Input placeholder="Full Name" />
+          </Form.Item>
+          <Form.Item label="Email" name="email">
+            <Input placeholder="name@example.com" />
+          </Form.Item>
+          <Form.Item label="Address" name="address">
+            <Input placeholder="address" />
+          </Form.Item>
+          <Form.Item label="Phone" name="phone">
+            <Input placeholder="+254 7xx-xxx-xxx" />
+          </Form.Item>
+          <Button type="primary" block>
+            Confirm Order
+          </Button>
+        </Form>
       </Drawer>
     </>
   );
