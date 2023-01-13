@@ -1,16 +1,48 @@
 import React, { useState, useEffect } from "react";
-import { getAllProducts, addToCart } from "../../API/Api";
-import { List, Card, Image, Typography, Rate, Button, message } from "antd";
+import { useParams } from "react-router-dom";
+import {
+  getAllProducts,
+  addToCart,
+  getProductsByCategory,
+} from "../../API/Api";
+import { LoadingOutlined } from "@ant-design/icons";
+import {
+  List,
+  Card,
+  Image,
+  Typography,
+  Rate,
+  Button,
+  message,
+  Spin,
+} from "antd";
 const { Meta } = Card;
 
 const Products = () => {
+  const category = useParams();
+  const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
   useEffect(() => {
-    getAllProducts().then((res) => {
+    setLoading(true);
+    getProductsByCategory(category.categoryId).then((res) => {
       console.log("res", res.products);
       setItems(res.products);
+      setLoading(false);
     });
-  }, []);
+  }, [category]);
+
+  //   if loading is true, show a loading message and Spinner
+  if (loading) {
+    const antIcon = (
+      <LoadingOutlined
+        style={{
+          fontSize: 24,
+        }}
+        spin
+      />
+    );
+    return <Spin indicator={antIcon} />;
+  }
 
   return (
     <div className="products">

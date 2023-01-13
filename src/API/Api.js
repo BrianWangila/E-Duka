@@ -8,8 +8,8 @@ export const getAllProducts = async () => {
 };
 
 // fetch all products by category
-export const getProductsByCategory = async (categoryId) => {
-  return fetch(`https://dummyjson.com/products?categoryId=${categoryId}`)
+export const getProductsByCategory = async (category) => {
+  return fetch(`https://dummyjson.com/products/category/${category}`)
     .then((res) => res.json())
     .then((res) => {
       return res;
