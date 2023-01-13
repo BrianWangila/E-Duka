@@ -68,29 +68,31 @@ const Products = () => {
   return (
     <div className="products">
       {/* sort through the products */}
-      <Typography.Text>Sort items by: </Typography.Text>
-      <Select
-        onChange={(value) => setSortOrder(value)}
-        defaultValue={"price-asc"}
-        options={[
-          {
-            label: "Price: Low to High",
-            value: "price-asc",
-          },
-          {
-            label: "Price: High to Low",
-            value: "price-desc",
-          },
-          {
-            label: "Rating: Low to High",
-            value: "rating-asc",
-          },
-          {
-            label: "Rating: High to Low",
-            value: "rating-desc",
-          },
-        ]}
-      ></Select>
+      <div className="sortItems">
+        <Typography.Text>Sort items by: </Typography.Text>
+        <Select
+          onChange={(value) => setSortOrder(value)}
+          defaultValue={"price-asc"}
+          options={[
+            {
+              label: "Price: Low to High",
+              value: "price-asc",
+            },
+            {
+              label: "Price: High to Low",
+              value: "price-desc",
+            },
+            {
+              label: "Rating: Low to High",
+              value: "rating-asc",
+            },
+            {
+              label: "Rating: High to Low",
+              value: "rating-desc",
+            },
+          ]}
+        ></Select>
+      </div>
       <List
         grid={{ column: 3 }}
         renderItem={(product, index) => {

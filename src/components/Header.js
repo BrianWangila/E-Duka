@@ -99,28 +99,24 @@ const Header = () => {
 
   return (
     <div className="appHeader">
-      <div className="logo">
-        <Typography.Title level={3} className="logo-text">
-          E-Duka
-        </Typography.Title>
-      </div>
-      <div className="menu">
-        <Menu onClick={onMenuClick} mode="horizontal" items={items} />
-      </div>
-      <div className="cart-and-account">
-        <Menu mode="horizontal">
-          <Menu.Item key="cart">
-            <AppCart />
-          </Menu.Item>
-          <Menu.Item key="signin">
-            <Button type="primary">Sign In</Button>
-          </Menu.Item>
+      <Typography.Title level={3} className="logo-text">
+        E-Duka
+      </Typography.Title>
 
-          <Menu.Item key="signup">
-            <Button>Sign Up</Button>
-          </Menu.Item>
-        </Menu>
-      </div>
+      <Menu onClick={onMenuClick} mode="horizontal" items={items} />
+
+      <Menu mode="horizontal">
+        <Menu.Item key="cart">
+          <AppCart />
+        </Menu.Item>
+        <Menu.Item key="signin">
+          <Button type="primary">Sign In</Button>
+        </Menu.Item>
+
+        <Menu.Item key="signup">
+          <Button>Sign Up</Button>
+        </Menu.Item>
+      </Menu>
     </div>
   );
 };
@@ -138,7 +134,7 @@ const AppCart = () => {
 
   // function onConfirmOrder
   const onConfirmOrder = (values) => {
-    console.log({values});
+    console.log({ values });
     setCartDrawerOpen(false);
     setCheckoutDrawerOpen(false);
     message.success("Order confirmed!");
@@ -147,7 +143,7 @@ const AppCart = () => {
   return (
     <>
       <Badge
-        count={5}
+        count={cartItems.length}
         onClick={() => {
           setCartDrawerOpen(true);
         }}
@@ -281,7 +277,9 @@ const AppCart = () => {
             <Input placeholder="+254 7xx-xxx-xxx" />
           </Form.Item>
           <Form.Item>
-            <Checkbox defaultChecked disabled>Cash on Delivery</Checkbox>
+            <Checkbox defaultChecked disabled>
+              Cash on Delivery
+            </Checkbox>
           </Form.Item>
           <Button type="primary" block htmlType="submit">
             Confirm Order

@@ -6,37 +6,13 @@
   height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* header */
 .appHeader {
-  height: 60px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  height: fit-content;
 }
 
 .logo {
@@ -83,9 +59,30 @@
   color: white !important;
 }
 
-.footer-links{
+.footer-links {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
+}
+
+/* MEDIA QUERY FOR SMALLER SCREENS */
+@media (max-width: 768px) {
+  .header-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .logo {
+    margin-bottom: 1rem;
+  }
+  .menu {
+    flex-grow: 1;
+  }
+  .headerTopRight {
+    margin-top: auto;
+  }
+  .ant-card {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
