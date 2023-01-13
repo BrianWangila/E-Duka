@@ -16,6 +16,7 @@ import {
   Input,
   InputNumber,
   Menu,
+  message,
   Table,
   Typography,
 } from "antd";
@@ -138,6 +139,9 @@ const AppCart = () => {
   // function onConfirmOrder
   const onConfirmOrder = (values) => {
     console.log({values});
+    setCartDrawerOpen(false);
+    setCheckoutDrawerOpen(false);
+    message.success("Order confirmed!");
   };
 
   return (
