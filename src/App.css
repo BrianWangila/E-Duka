@@ -62,18 +62,14 @@
 .appFooter {
   display: flex;
   flex-direction: column;
+  font-size: medium;
+  font-weight: lighter;
   align-items: center;
-  justify-content: space-evenly;
-  height: 60px;
+  justify-content: space-between;
+  height: fit-content;
   background-color: black;
-  color: white !important;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
+  color: white;
+  padding: 10px 0;
 }
 
 /* MEDIA QUERY FOR SMALLER SCREENS */

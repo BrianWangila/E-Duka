@@ -1,16 +1,25 @@
-import { Typography } from "antd";
+import { Divider, Typography } from "antd";
 import React from "react";
 
 const Footer = () => {
   return (
     <div className="appFooter">
-      <div className="footer-links">
-        <Typography.Link>Privacy Policy</Typography.Link>
-        <Typography.Link>Terms of Service</Typography.Link>
-        <Typography.Link>Support</Typography.Link>
-      </div>
+      <Typography.Title
+        level={5}
+        style={{ color: "white", textAlign: "center" }}
+      >
+        © 2023 All Rights Reserved
+      </Typography.Title>
 
-      <Typography.Text>© 2023</Typography.Text>
+      <Typography.Text style={{ color: "white", textAlign: "center" }}>
+        <a href="" target="_blank" rel="noreferrer">
+          Privacy Policy
+        </a>{" "}
+        |{" "}
+        <a href="" target="_blank" rel="noreferrer">
+          Terms of Service
+        </a>
+      </Typography.Text>
     </div>
   );
 };
